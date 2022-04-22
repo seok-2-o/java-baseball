@@ -41,7 +41,7 @@ public class Stat {
                 .distinct()
                 .count();
         if (distinct != 3) {
-            throw new IllegalArgumentException("투구 기록은 중복 되지 않는 0~9로 숫자 조합이여야 합니다.");
+            throw new IllegalArgumentException("투구 기록은 중복 되지 않는 0~9 숫자 조합이여야 합니다.");
         }
     }
 

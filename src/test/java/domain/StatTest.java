@@ -1,5 +1,6 @@
 package domain;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -8,6 +9,22 @@ import static org.assertj.core.api.Assertions.assertThat;
 class StatTest {
 
     private static final Stat FIXTURE = new Stat(0, 7, 6);
+
+    @DisplayName("중복된 숫자로 Stat을 생성할 수 없다.")
+    @Test
+    void create01() {
+        int[] input = new int[]{4, 4, 5};
+        Assertions.assertThatThrownBy(() -> new Stat(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("10보다 큰 숫자로 Stat을 생성할 수 없다.")
+    @Test
+    void create02() {
+        int[] input = new int[]{10, 4, 5};
+        Assertions.assertThatThrownBy(() -> new Stat(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 
     @DisplayName("485 - 들어맞는 숫자가 아예 없으므로 Out을 리턴한다.")
     @Test

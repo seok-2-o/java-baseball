@@ -4,13 +4,13 @@ import java.util.Objects;
 
 public final class Record {
 
-    public static final Record TREE_STRIKE = new Record(3, 0);
-
+    private final int[] stat;
     private final int strike;
     private final int ball;
 
-    public Record(int strike, int ball) {
+    public Record(int[] stat, int strike, int ball) {
         validate(strike, ball);
+        this.stat = stat;
         this.strike = strike;
         this.ball = ball;
     }
@@ -29,6 +29,18 @@ public final class Record {
         return strike == 0 && ball == 0;
     }
 
+    public int[] getStat() {
+        return stat;
+    }
+
+    public int getStrike() {
+        return strike;
+    }
+
+    public int getBall() {
+        return ball;
+    }
+
     @Override
     public boolean equals(Object other) {
         if (this == other) return true;
@@ -42,4 +54,6 @@ public final class Record {
     public int hashCode() {
         return Objects.hash(strike, ball);
     }
+
+
 }
